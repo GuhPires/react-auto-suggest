@@ -18,7 +18,7 @@
     }
 
     handleClick(e){
-        if(!this.node.contains(e.target)){
+        if(this.node && !this.node.contains(e.target)){
             this.closeSuggestions()
         }
     }
