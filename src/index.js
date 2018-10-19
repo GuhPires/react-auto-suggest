@@ -67,15 +67,15 @@
 
     render(){
         return(
-            <div ref={node => this.node = node} className="auto-suggest-wrapper" style={{width: '90%'}}>
+            <div ref={node => this.node = node} className="auto-suggest-wrapper" style={{width: '90%', position: 'relative'}}>
                 <input className="auto-suggest" type="text" value={this.state.selected} onChange={this.handleInputChange.bind(this)} style={{width: "100%"}} placeholder={this.props.placeholder} />
                 {this.props.isClearable && this.state.selected && <span className="clear-suggestion-input" onClick={this.clearInput.bind(this)}>X</span>}
-                <div className="suggestion-wrapper" style={{width: '100%', display: this.state.showSuggestion ? 'flex' : 'none'}}>
+                <div className="suggestion-wrapper" style={{width: '100%', boxSizing: 'border-box', display: this.state.showSuggestion ? 'flex' : 'none'}}>
                     {this.state.data.length > 0 && this.state.data.map((d, i) => (
                         <span key={i} className="suggestion-content" onClick={this.selectOption.bind(this, d)}>{d[this.props.inputKey]}</span>
                     ))}
                     {this.state.data.length < 1 && <span style={{padding: '10px'}}>{this.props.noResultsText}</span>}
-                </div> 
+                </div>
             </div>
         )
     }
